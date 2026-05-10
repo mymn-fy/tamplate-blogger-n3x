@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <script>
+  //<![CDATA[
+    (function(){
+      try {
+        var s = localStorage.getItem('theme');
+        var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', s || (d ? 'dark' : 'light'));
+      } catch(e){}
+    })();
+  //]]>
+  </script>
+  <title><data:blog.pageTitle/></title>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&#38;display=swap' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined' rel='stylesheet'/>
+  <link href='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css' rel='stylesheet'/>
+  <b:skin><![CDATA[
+    :root, [data-theme="dark"] {
+      --bg: #0b0c10;
+      --bg-elevated: #15161a;
+      --surface: rgba(28, 30, 36, 0.6);
+      --surface-solid: #1c1e24;
+      --border: rgba(255,255,255,0.06);
+      --border-solid: #2f3542;
+      --accent: #00d2d3;
+      --accent-hover: #01a3a4;
+      --text: #f1f2f6;
+      --text-secondary: #a4b0be;
+      --text-muted: #747d8c;
+      --glass-bg: rgba(21, 22, 26, 0.75);
+      --glass-soft-bg: rgba(28, 30, 36, 0.5);
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.35);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --container: 1400px;
+    }
+    [data-theme="light"] {
+      --bg: #f8f9fa;
+      --bg-elevated: #ffffff;
+      --surface: rgba(255, 255, 255, 0.6);
+      --surface-solid: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --border-solid: #dcdde1;
+      --accent: #0097e6;
+      --accent-hover: #00a8ff;
+      --text: #2f3640;
+      --text-secondary: #718093;
+      --text-muted: #a4b0be;
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-soft-bg: rgba(255, 255, 255, 0.5);
+      --shadow: 0 8px 32px rgba(0,0,0,0.05);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .material-icons { vertical-align: middle; font-size: 1.1em; line-height: 1; }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border: 1px solid var(--border);
+    }
+    .glass-soft {
+      background: var(--glass-soft-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+    }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+    .brand .material-icons, .brand .material-symbols-outlined { font-size: 1.5rem; color: var(--accent); }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    /* Bypass pembungkus div bawaan widget Blogger agar layout Flexbox tetap rapi */
+    .main-nav .section,
+    .main-nav .widget {
+      display: contents;
+    }
+    .main-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .main-nav a:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+
+    .header-search {
+      position: relative;
+      width: 340px;
+      max-width: 100%;
+    }
+    .header-search form {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .header-search form:focus-within {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(0, 210, 211, 0.3);
+      box-shadow: 0 0 0 3px rgba(0, 210, 211, 0.08);
+    }
+    .header-search input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 10px 18px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .header-search input::placeholder { color: var(--text-muted); }
+    .header-search button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 0 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .header-search button:hover { color: var(--accent); }
+
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .icon-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--transition);
+    }
+    .icon-btn:hover {
+      background: var(--surface-solid); color: var(--accent); border-color: var(--accent);
+    }
+    .menu-toggle {
+      display: none;
+    }
+
+    .site-main { min-height: calc(100vh - 68px - 80px); padding: 28px 0; }
+
+    .page-header {
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .page-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.3px;
+    }
+    .page-title .material-icons { color: var(--accent); font-size: 1.5rem; margin-top: 6px; }
+
+    /* Hero Carousel N3X */
+    .hero-carousel { margin-bottom: 32px; padding: 20px 0; }
+    .hero-carousel .splide__slide {
+      transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+      opacity: 0.35;
+      filter: blur(4px);
+      transform: scale(0.85);
+    }
+    .hero-carousel .splide__slide.is-active { opacity: 1; filter: blur(0); transform: scale(1); z-index: 2; }
+    .hero-slide-link { display: block; position: relative; aspect-ratio: 2 / 3; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); height: 100%; }
+    .hero-carousel { margin-bottom: 32px; padding: 20px 0; }
+    .hero-carousel .splide__slide {
+      transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+      opacity: 0.35;
+      filter: blur(4px);
+      transform: scale(0.85);
+    }
+    .hero-carousel .splide__slide.is-active { opacity: 1; filter: blur(0); transform: scale(1); z-index: 2; }
+    .hero-slide-link { display: block; position: relative; aspect-ratio: 2 / 3; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); height: 100%; }
+    .hero-slide-link img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .hero-slide-link:hover img { transform: scale(1.06); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 16px; color: #fff; }
+    .hero-title { font-size: 1rem; font-weight: 700; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+    
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 28px 0;
+      width: 100%;
+    }
+    .section-heading {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+    }
+    .section-heading .material-icons { color: var(--accent); font-size: 1.6rem; }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .book-card {
+      background: transparent;
+      border-radius: 0;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+    }
+    .book-card:hover {
+      transform: translateY(-4px);
+    }
+    .card-link { display: block; }
+    .card-image {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .book-card:hover .card-image { border-color: var(--accent); box-shadow: var(--shadow-lg); }
+    .book-card:hover .card-image img { transform: scale(1.08); }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+      transition: background 0.3s ease;
+    }
+    .book-card:hover .card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
+    }
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .card-badge[data-label="Non Fiksi"],
+    .card-badge[data-label="Non-Fiksi"],
+    .card-badge[data-label="Nonfiksi"],
+    .card-badge[data-label="non fiksi"],
+    .card-badge[data-label="non-fiksi"],
+    .card-badge[data-label="nonfiksi"] {
+      background: #00a8ff;
+      color: #fff;
+    }
+    .card-badge[data-label="Fiksi"],
+    .card-badge[data-label="fiksi"],
+    .card-badge[data-label="FIKSI"] {
+      background: #ff4757;
+      color: #fff;
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      transition: transform 0.3s ease;
+    }
+    .book-card:hover .card-title { transform: translateY(-4px); }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .pill-soft {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      max-width: 100%;
+    }
+    .card-year {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .book-detail {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 48px;
+    }
+    .detail-cover { position: relative; flex-shrink: 0; }
+    .detail-cover img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .detail-content { display: flex; flex-direction: column; gap: 24px; }
+    .detail-header { margin-bottom: 4px; }
+    .detail-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .detail-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+    .detail-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .meta-item .material-icons { font-size: 1.1rem; color: var(--accent); }
+    .meta-item strong { color: var(--text); font-weight: 600; }
+    .detail-labels { display: flex; flex-wrap: wrap; gap: 8px; }
+    .label-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .label-tag:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .label-tag[data-label="Non Fiksi"],
+    .label-tag[data-label="Non-Fiksi"],
+    .label-tag[data-label="Nonfiksi"],
+    .label-tag[data-label="non fiksi"],
+    .label-tag[data-label="nonfiksi"] {
+      border-color: #00a8ff;
+      color: #00a8ff;
+    }
+    .label-tag[data-label="Fiksi"],
+    .label-tag[data-label="fiksi"] {
+      border-color: #ff4757;
+      color: #ff4757;
+    }
+    .detail-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+    }
+    .detail-body h2, .detail-body h3, .detail-body h4 {
+      color: var(--text);
+      margin: 28px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .detail-body h3 { font-size: 1.15rem; }
+    .detail-body h3 .material-icons { color: var(--accent); font-size: 1.2rem; }
+    .detail-body p { margin-bottom: 16px; }
+    .detail-body img { border-radius: var(--radius-md); margin: 16px 0; border: 1px solid var(--border); }
+    .detail-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
+      margin: 20px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .detail-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .detail-body th, .detail-body td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-body th {
+      background: var(--surface-solid);
+      color: var(--text);
+      font-weight: 600;
+      width: 28%;
+    }
+    .detail-body tr:last-child td { border-bottom: none; }
+    .detail-body tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* FIX ANTI-DOUBLE: Hide first image in body if featured image exists */
+    .book-detail .detail-body img:first-of-type { display: none; }
+
+    .static-page {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .static-page h1 {
+      font-size: 1.9rem;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+    }
+    .static-page h1 .material-icons { color: var(--accent); }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .pagination a, .pagination span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .pagination a {
+      background: var(--surface-solid);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .pagination a:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .pagination .current {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      border: 1px solid var(--accent);
+    }
+    .pagination .page-dots {
+      background: transparent; border: none; min-width: auto; padding: 0 4px; color: var(--text-muted);
+    }
+
+    .site-footer { margin-top: 56px; padding: 24px 0; }
+    .footer-box { border-radius: var(--radius-xl); padding: 24px 32px; }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; max-width: 600px; }
+    .social ul { list-style: none; display: flex; align-items: center; gap: 12px; margin: 0; padding: 0; }
+    .social a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-solid); border: 1px solid var(--border); color: var(--text-muted); transition: var(--transition); }
+    .social a:hover { color: var(--accent); border-color: var(--accent); }
+    .social svg { fill: currentColor; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+    .widget-area {
+      background: var(--bg-elevated);
+      border: 1px dashed var(--border-solid);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .widget-area h2 {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      .detail-grid { grid-template-columns: 240px 1fr; gap: 32px; padding: 32px; }
+      .book-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+      .header-search { width: 260px; }
+    }
+    @media (max-width: 768px) {
+      .header-inner { height: 60px; gap: 12px; }
+      .brand-text { display: none; }
+      .main-nav { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 12px 24px; flex-direction: column; gap: 4px; z-index: 999; }
+      .main-nav.active { display: flex; }
+      .main-nav a { width: 100%; padding: 10px 14px; }
+      .menu-toggle { display: flex; }
+      .header-search { width: auto; flex: 1; }
+      .detail-grid { grid-template-columns: 1fr; padding: 24px; }
+      .hero-carousel { margin-bottom: 20px; }
+      .hero-overlay { padding: 12px; }
+      .hero-title { font-size: 0.85rem; }
+      
+      .section-heading { font-size: 1.3rem; margin-bottom: 20px; }
+      .detail-cover { max-width: 240px; margin: 0 auto; }
+      .detail-title { font-size: 1.7rem; }
+      .detail-meta-bar { flex-direction: column; gap: 12px; padding: 16px 0; }
+      .book-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+      .page-title { font-size: 1.4rem; }
+      .static-page { padding: 28px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero-carousel { margin-bottom: 20px; }
+      .hero-overlay { padding: 12px; }
+      .hero-title { font-size: 0.85rem; }
+      
+      .book-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .card-title { font-size: 0.85rem; }
+      .card-overlay { padding: 12px; }
+      .container { padding: 0 16px; }
+      .detail-grid { padding: 16px; gap: 20px; }
+      .detail-title { font-size: 1.4rem; }
+      .icon-btn { width: 36px; height: 36px; }
+      .header-search input { padding: 8px 14px; font-size: 0.8rem; }
+      .header-search button { padding: 0 12px; }
+    }
+
+    /* Loader N3X */
+    .loader-overlay {
+      position: fixed; inset: 0; background: var(--bg);
+      z-index: 9999; display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+    .loader-overlay.hide { opacity: 0; pointer-events: none; }
+    .loader-card {
+      padding: 32px 48px; border-radius: var(--radius-lg);
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    }
+    .loader-card .spinner {
+      width: 40px; height: 40px; border: 3px solid var(--border-solid);
+      border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite;
+    }
+    .loader-text { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; letter-spacing: 1px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .book-card { animation: fadeInUp 0.5s ease forwards; }
+    .book-card:nth-child(1) { animation-delay: 0.02s; }
+    .book-card:nth-child(2) { animation-delay: 0.04s; }
+    .book-card:nth-child(3) { animation-delay: 0.06s; }
+    .book-card:nth-child(4) { animation-delay: 0.08s; }
+    .book-card:nth-child(5) { animation-delay: 0.10s; }
+    .book-card:nth-child(6) { animation-delay: 0.12s; }
+
+    .post-feed { display: contents; }
+    .post { margin: 0; }
+    .comments { display: none; }
+    .post-share-buttons { display: none; }
+    .post-location { display: none; }
+    .post-reactions { display: none; }
+  ]]></b:skin>
+</head>
+
+<body>
+  <!-- GlassyFlix Loader -->
+  <div class='loader-overlay' id='glassyLoader'>
+    <div class='loader-card glass'>
+      <span class='material-icons' style='font-size: 3rem; color: var(--accent);'>menu_book</span>
+      <div class='spinner'/>
+      <p class='loader-text'>MEMUAT...</p>
+    </div>
+  </div>
+
+  <header class='site-header glass'>
+    <div class='container'>
+      <div class='header-inner'>
+        <a class='brand' expr:href='data:blog.homepageUrl'>
+          <span class='material-symbols-outlined'>book_4</span>
+          <span class='brand-text'>Muhaimin Pustakālay</span>
+        </a>
+
+        <nav class='main-nav' id='mainNav'>
+          <b:section id='header-menu' maxwidgets='1' name='Menu Navigasi' showaddelement='yes'>
+            <b:widget id='LinkList1' locked='false' title='Menu Utama' type='LinkList' version='2'>
+              <b:widget-settings>
+                <b:widget-setting name='link-0'>/</b:widget-setting>
+                <b:widget-setting name='link-1'>/search/label/</b:widget-setting>
+                <b:widget-setting name='link-2'>/p/tentang.html</b:widget-setting>
+                <b:widget-setting name='text-0'>Beranda</b:widget-setting>
+                <b:widget-setting name='text-1'>Koleksi</b:widget-setting>
+                <b:widget-setting name='text-2'>Tentang</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <b:loop values='data:links' var='link'>
+                  <a expr:href='data:link.target'><data:link.name/></a>
+                </b:loop>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </nav>
+
+        <div class='header-search'>
+          <form action='/search' method='get'>
+            <input autocomplete='off' name='q' placeholder='Cari koleksi...' type='text'/>
+            <button type='submit'><span class='material-icons'>search</span></button>
+          </form>
+        </div>
+
+        <div class='header-actions'>
+          <button aria-label='Toggle dark mode' class='icon-btn' id='themeBtn'>
+            <span class='material-icons' id='themeIcon'>light_mode</span>
+          </button>
+          <button class='icon-btn menu-toggle' onclick='document.getElementById("mainNav").classList.toggle("active")'>
+            <span class='material-icons'>menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class='site-main'>
+    <div class='container'>
+      <b:section class='main-section' id='main' name='Konten Utama' showaddelement='yes'>
+        <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog' version='2'>
+          <b:widget-settings>
+            <b:widget-setting name='postsPerPage'>10</b:widget-setting>
+            <b:widget-setting name='showDate'>false</b:widget-setting>
+            <b:widget-setting name='showAuthor'>false</b:widget-setting>
+            <b:widget-setting name='showLabels'>true</b:widget-setting>
+            <b:widget-setting name='showComments'>false</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+            <b:widget-setting name='showLocation'>false</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+          </b:widget-settings>
+
+          <b:includable id='main' var='this'>
+            <b:if cond='data:blog.pageType == &quot;index&quot; or data:blog.pageType == &quot;archive&quot; or data:blog.pageType == &quot;label&quot;'>
+              
+            <b:if cond='data:blog.url == data:blog.homepageUrl'>
+              <div class='hero-carousel splide' id='heroCarousel'>
+                <div class='splide__track'>
+                  <ul class='splide__list'>
+                    <!-- Ambil 8 Buku Terbaru untuk Carousel -->
+                    <b:loop index='i' values='data:posts' var='post'>
+                      <b:if cond='data:i &lt; 8'>
+                        <li class='splide__slide'>
+                          <a class='hero-slide-link' expr:href='data:post.url'>
+                            <b:if cond='data:post.featuredImage'>
+                              <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 400)'/>
+                            <b:else/>
+                              <img alt='No Cover' src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22600%22%3E%3Crect fill=%22%2315161a%22 width=%22400%22 height=%22600%22/%3E%3Ctext fill=%22%23747d8c%22 font-family=%22sans-serif%22 font-size=%2220%22 dy=%2210.5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ETidak Ada Cover%3C/text%3E%3C/svg%3E'/>
+                            </b:if>
+                            <div class='hero-overlay'>
+                              <h3 class='hero-title'><data:post.title/></h3>
+                            </div>
+                          </a>
+                        </li>
+                      </b:if>
+                    </b:loop>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='section-divider'></div>
+            </b:if>
+              <h2 class='section-heading'><span class='material-icons'>library_books</span> Koleksi Buku</h2>
+
+              <div class='book-grid'>
+                <b:loop values='data:posts' var='post'>
+                  <article class='book-card'>
+                    <a class='card-link' expr:href='data:post.url'>
+                      <div class='card-image'>
+                        <b:if cond='data:post.featuredImage'>
+                          <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 400)' loading='lazy'/>
+                        <b:else/>
+                          <img alt='No Cover' src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22600%22%3E%3Crect fill=%22%2315161a%22 width=%22400%22 height=%22600%22/%3E%3Ctext fill=%22%23747d8c%22 font-family=%22sans-serif%22 font-size=%2220%22 dy=%2210.5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ETidak Ada Cover%3C/text%3E%3C/svg%3E'/>
+                        </b:if>
+                        <div class='card-overlay'>
+                          <h2 class='card-title'><data:post.title/></h2>
+                        </div>
+                        <b:loop values='data:post.labels' var='label' index='i'>
+                          <b:if cond='data:i == 0'>
+                            <span class='card-badge' expr:data-label='data:label.name'><data:label.name/></span>
+                          </b:if>
+                        </b:loop>
+                      </div>
+                    </a>
+                  </article>
+                </b:loop>
+              </div>
+
+              <div class='pagination' id='blog-pager'>
+                  <b:if cond='data:newerPageLink'>
+                    <a class='newer-link' expr:href='data:newerPageUrl'><span class='material-icons'>chevron_left</span></a>
+                  </b:if>
+                  <b:if cond='data:olderPageLink'>
+                    <a class='older-link' expr:href='data:olderPageUrl'><span class='material-icons'>chevron_right</span></a>
+                  </b:if>
+                </div>
+            </b:if>
+
+            <b:if cond='data:blog.pageType == &quot;item&quot;'>
+              <b:loop values='data:posts' var='post'>
+                <article class='book-detail'>
+                  <div class='detail-grid'>
+                    <div class='detail-cover'>
+                      <b:if cond='data:post.featuredImage'>
+                        <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 600)'/>
+                      <b:else/>
+                        <img alt='No Cover' src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22900%22%3E%3Crect fill=%22%2315161a%22 width=%22600%22 height=%22900%22/%3E%3Ctext fill=%22%23747d8c%22 font-family=%22sans-serif%22 font-size=%2228%22 dy=%2210.5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ETidak Ada Cover%3C/text%3E%3C/svg%3E'/>
+                      </b:if>
+                    </div>
+
+                    <div class='detail-content'>
+                      <div class='detail-header'>
+                        <h1 class='detail-title'><data:post.title/></h1>
+                        <p class='detail-subtitle'>Koleksi Perpustakaan Digital</p>
+                      </div>
+
+                      <div class='detail-meta-bar'>
+                        <div class='meta-item'>
+                          <span class='material-icons'>edit</span>
+                          <strong>Penulis:</strong> <data:post.author.name/>
+                        </div>
+                        <div class='meta-item'>
+                          <span class='material-icons'>event</span>
+                          <strong>Dipublikasikan:</strong> <data:post.date/>
+                        </div>
+                        <div class='meta-item'>
+                          <span class='material-icons'>folder_open</span>
+                          <strong>Genre:</strong>
+                          <b:loop values='data:post.labels' var='label' index='i'>
+                            <a expr:href='data:label.url' style='color: var(--accent); margin-left: 4px;'><data:label.name/></a>
+                            <b:if cond='data:i != data:post.labels.size - 1'>,</b:if>
+                          </b:loop>
+                        </div>
+                      </div>
+
+                      <div class='detail-labels'>
+                        <b:loop values='data:post.labels' var='label'>
+                          <a class='label-tag' expr:data-label='data:label.name' expr:href='data:label.url'><span class='material-icons'>local_offer</span> <data:label.name/></a>
+                        </b:loop>
+                      </div>
+
+                      <div class='detail-body'>
+                        <h3><span class='material-icons'>description</span> Sinopsis &amp; Detail Buku</h3>
+                        <data:post.body/>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </b:loop>
+            </b:if>
+
+            <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+              <b:loop values='data:posts' var='post'>
+                <article class='static-page'>
+                  <h1><span class='material-icons'>article</span> <data:post.title/></h1>
+                  <div class='detail-body'><data:post.body/></div>
+                </article>
+              </b:loop>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </div>
+  </main>
+
+  <footer class='site-footer container'>
+    <div class='footer-box glass'>
+      <div class='footer-inner'>
+        <span class='footer-copy'>
+          &#169; <data:blog.year/> <data:blog.title/> &#8212; Made with &#10084;&#65039; by <a href='https://github.com/mymn-fy' rel='author' target='_blank'>Min</a>
+        </span>
+        <nav aria-label='Social links' class='social social--footer'>
+          <ul>
+            <li>
+              <a aria-label='Instagram' href='https://www.instagram.com/mymn.fy' rel='me noopener noreferrer' target='_blank'>
+                <svg aria-hidden='true' height='20' viewBox='0 0 24 24' width='20'>
+                  <path d='M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm4.75-2a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z'/>
+                </svg>
+                <span class='sr-only'>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a aria-label='GitHub' href='https://github.com/mymn-fy' rel='me noopener noreferrer' target='_blank'>
+                <svg aria-hidden='true' height='20' viewBox='0 0 24 24' width='20'>
+                  <path d='M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.699-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z'/>
+                </svg>
+                <span class='sr-only'>GitHub</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  //<![CDATA[
+    // Dismiss Loader
+    window.addEventListener('load', function(){
+      const el = document.getElementById('glassyLoader');
+      if(!el) return;
+      el.classList.add('hide');
+    });
+
+    // Dark/Light Theme Toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+
+    function updateIcon() {
+      if (root.getAttribute('data-theme') === 'light') {
+        themeIcon.innerText = 'dark_mode';
+      } else {
+        themeIcon.innerText = 'light_mode';
+      }
+    }
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon();
+    });
+    updateIcon();
+
+    // Menutup menu mobile saat klik di luar area
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('mainNav');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      if (nav && nav.classList.contains('active') && !nav.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+        nav.classList.remove('active');
+      }
+    });
+  //]]>
+  </script>
+
+  <script>
+  //<![CDATA[
+  document.addEventListener("DOMContentLoaded", function() {
+    const perPage = 10; // Pastikan angka ini sama dengan pengaturan di Dasbor Blogger
+    const maxVisiblePages = 5; 
+    const pager = document.getElementById('blog-pager');
+    if (!pager) return;
+
+    function getPageConfig(locUrl) {
+      let loc = new URL(locUrl, window.location.origin);
+      let isLabel = loc.pathname.includes('/search/label/');
+      let isSearch = loc.search.includes('q=');
+      let feedUrl = '/feeds/posts/default?alt=json&max-results=0';
+      let baseUrl = '/search?max-results=' + perPage;
+      
+      if (isLabel) {
+        let label = decodeURIComponent(loc.pathname.split('/search/label/')[1].split('?')[0]);
+        feedUrl = '/feeds/posts/default/-/' + encodeURIComponent(label) + '?alt=json&max-results=0';
+        baseUrl = '/search/label/' + encodeURIComponent(label) + '?max-results=' + perPage;
+      } else if (isSearch) {
+        let q = new URLSearchParams(loc.search).get('q');
+        feedUrl = '/feeds/posts/default?alt=json&q=' + encodeURIComponent(q) + '&max-results=0';
+        baseUrl = '/search?q=' + encodeURIComponent(q) + '&max-results=' + perPage;
+      }
+      return { loc, isLabel, isSearch, feedUrl, baseUrl };
+    }
+
+    function renderPager(locUrl) {
+      let cfg = getPageConfig(locUrl);
+      let params = new URLSearchParams(cfg.loc.search);
+      let currentStart = parseInt(params.get('start')) || 1;
+      let currentPage = Math.ceil(currentStart / perPage);
+      if (cfg.loc.pathname === '/' || cfg.loc.pathname === '/index.html') currentPage = 1;
+
+      fetch(cfg.feedUrl)
+        .then(r => r.json())
+        .then(data => {
+          let total = parseInt(data.feed.openSearch$totalResults.$t);
+          let totalPages = Math.ceil(total / perPage);
+          if (totalPages <= 1) {
+            pager.style.display = 'none';
+            return;
+          } else {
+            pager.style.display = 'flex';
+          }
+
+          let html = '';
+          if (currentPage > 1) {
+            let prevStart = (currentPage - 2) * perPage + 1;
+            let link = (currentPage === 2 && !cfg.isLabel && !cfg.isSearch) ? '/' : cfg.baseUrl + '&start=' + prevStart;
+            if (cfg.isLabel && currentPage === 2) link = cfg.baseUrl.split('?')[0];
+            html += '<a href="' + link + '" class="ajax-page"><span class="material-icons">chevron_left</span></a>';
+          } else {
+            html += '<span style="opacity:0.3; cursor:not-allowed;"><span class="material-icons">chevron_left</span></span>';
+          }
+
+          let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+          let endPage = startPage + maxVisiblePages - 1;
+          if (endPage > totalPages) { endPage = totalPages; startPage = Math.max(1, endPage - maxVisiblePages + 1); }
+
+          if (startPage > 1) {
+            html += '<a href="' + (cfg.isLabel||cfg.isSearch ? cfg.baseUrl+'&start=1' : '/') + '" class="ajax-page">1</a>';
+            if (startPage > 2) html += '<span class="page-dots">...</span>';
+          }
+          for (let i = startPage; i <= endPage; i++) {
+            if (i === currentPage) { html += '<span class="current">' + i + '</span>'; } 
+            else {
+              let iStart = (i - 1) * perPage + 1;
+              let link = (i === 1 && !cfg.isLabel && !cfg.isSearch) ? '/' : cfg.baseUrl + '&start=' + iStart;
+              if (cfg.isLabel && i === 1) link = cfg.baseUrl.split('?')[0];
+              html += '<a href="' + link + '" class="ajax-page">' + i + '</a>';
+            }
+          }
+          if (endPage < totalPages) {
+            if (endPage < totalPages - 1) html += '<span class="page-dots">...</span>';
+            html += '<a href="' + cfg.baseUrl + '&start=' + ((totalPages - 1) * perPage + 1) + '" class="ajax-page">' + totalPages + '</a>';
+          }
+          
+          if (currentPage < totalPages) {
+            html += '<a href="' + cfg.baseUrl + '&start=' + (currentPage * perPage + 1) + '" class="ajax-page"><span class="material-icons">chevron_right</span></a>';
+          } else {
+            html += '<span style="opacity:0.3; cursor:not-allowed;"><span class="material-icons">chevron_right</span></span>';
+          }
+          pager.innerHTML = html;
+        }).catch(e => console.error('Paginasi error:', e));
+    }
+
+    renderPager(window.location.href);
+
+    function renderPosts(entries) {
+      let html = '';
+      entries.forEach(entry => {
+        let title = entry.title.$t;
+        let url = entry.link.find(l => l.rel === 'alternate').href;
+        let img = '';
+        if (entry.media$thumbnail) {
+          img = entry.media$thumbnail.url;
+        } else if (entry.content && entry.content.$t) {
+          let imgMatch = entry.content.$t.match(/<img[^>]+src=(['"])(.*?)\1/i);
+          if (imgMatch) img = imgMatch[2];
+        }
+        if (img) {
+          img = img.replace(/\/s[0-9]+[^\/]*\//, '/w400/');
+          img = img.replace(/\=s[0-9]+[a-zA-Z0-9\-]*/, '=w400');
+        }
+        let label = entry.category ? entry.category[0].term : '';
+        
+        html += `<article class="book-card">
+          <a class="card-link" href="${url}">
+            <div class="card-image">
+              ${img ? `<img alt="${title}" src="${img}" loading="lazy"/>` : `<img alt="No Cover" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22600%22%3E%3Crect fill=%22%2315161a%22 width=%22400%22 height=%22600%22/%3E%3Ctext fill=%22%23747d8c%22 font-family=%22sans-serif%22 font-size=%2220%22 dy=%2210.5%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ETidak Ada Cover%3C/text%3E%3C/svg%3E"/>`}
+              <div class="card-overlay">
+                <h2 class="card-title">${title}</h2>
+              </div>
+              ${label ? `<span class="card-badge" data-label="${label}">${label}</span>` : ''}
+            </div>
+          </a>
+        </article>`;
+      });
+      return html;
+    }
+
+    pager.addEventListener('click', function(e) {
+      let link = e.target.closest('a.ajax-page');
+      if (!link) return;
+      e.preventDefault();
+
+      let url = link.href;
+      let loader = document.getElementById('glassyLoader');
+      if (loader) loader.classList.remove('hide');
+
+      let cfg = getPageConfig(url);
+      let params = new URLSearchParams(cfg.loc.search);
+      let start = params.get('start') || 1;
+      let fetchUrl = cfg.feedUrl.replace('max-results=0', `max-results=${perPage}&start-index=${start}`);
+
+      fetch(fetchUrl)
+        .then(r => r.json())
+        .then(data => {
+          let entries = data.feed.entry || [];
+          document.querySelector('.book-grid').innerHTML = renderPosts(entries);
+          
+          window.history.pushState({ path: url }, '', url);
+          renderPager(url);
+          
+          let hero = document.getElementById('heroCarousel');
+          let divider = document.querySelector('.section-divider');
+          if (start > 1 || cfg.isLabel || cfg.isSearch) {
+             if (hero) hero.style.display = 'none';
+             if (divider) divider.style.display = 'none';
+          } else {
+             if (hero) hero.style.display = 'block';
+             if (divider) divider.style.display = 'block';
+          }
+
+          window.scrollTo({ top: document.querySelector('.site-main').offsetTop - 20, behavior: 'smooth' });
+          if (loader) setTimeout(() => loader.classList.add('hide'), 400);
+        })
+        .catch(err => {
+          console.error(err);
+          window.location.href = url; // Fallback jika gagal
+        });
+    });
+  });
+  //]]>
+  </script>
+  
+  <!-- Script Splide.js & Inisialisasi Carousel -->
+  <script src='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js'></script>
+  <script>
+  //<![CDATA[
+  document.addEventListener("DOMContentLoaded", function() {
+    var heroEl = document.getElementById('heroCarousel');
+    if (heroEl) {
+      new Splide(heroEl, {
+        type: 'loop',
+        focus: 'center',
+        perPage: 5,
+        gap: '20px',
+        autoplay: true,
+        interval: 3500,
+        speed: 800,
+        updateOnMove: true,
+        pagination: false,
+        arrows: false,
+        breakpoints: {
+          1200: { perPage: 4, gap: '16px' },
+          992:  { perPage: 3, gap: '16px' },
+          768:  { perPage: 3, gap: '12px' },
+          480:  { perPage: 2, gap: '10px' }
+        }
+      }).mount();
+    }
+  });
+  //]]>
+  </script>
+</body>
+</html>

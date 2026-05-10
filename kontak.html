@@ -1,0 +1,77 @@
+<style>
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    padding: 4px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .profile-name { margin: 0 0 8px 0; color: var(--text); font-size: 1.6rem; font-weight: 800; }
+  .profile-bio { color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface-solid);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .contact-card svg, .contact-card .material-symbols-outlined {
+    color: var(--accent); fill: var(--accent); width: 32px; height: 32px; font-size: 32px; flex-shrink: 0;
+  }
+  .contact-info { display: flex; flex-direction: column; overflow: hidden; }
+  .contact-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; margin-bottom: 2px; }
+  .contact-value { font-weight: 500; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+
+<div class="profile-section">
+  <img src="https://avatars.githubusercontent.com/u/150981582?v=4" alt="Ahmad Muhaimin" class="profile-img" />
+  <h2 class="profile-name">Ahmad Muhaimin</h2>
+  <p class="profile-bio">
+    Halo! Saya pengembang di balik proyek Muhaimin Pustakālay. Saya memiliki minat besar pada pengembangan web modern dan kurasi literatur digital. Jangan ragu untuk terhubung melalui platform di bawah ini.
+  </p>
+</div>
+
+<div class="contact-grid">
+  <a href="mailto:ahmdmhymin@gmail.com" target="_blank" class="contact-card">
+    <span class="material-symbols-outlined">mail</span>
+    <div class="contact-info"><span class="contact-label">Email</span><span class="contact-value">ahmdmhymin@gmail.com</span></div>
+  </a>
+  <a href="https://instagram.com/mymn.fy" target="_blank" class="contact-card">
+    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm4.75-2a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+    <div class="contact-info"><span class="contact-label">Instagram</span><span class="contact-value">@mymn.fy</span></div>
+  </a>
+  <a href="https://www.facebook.com/mymn.fy" target="_blank" class="contact-card">
+    <svg viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.5v-2.9h2.5v-2.2c0-2.5 1.5-3.9 3.6-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9h2.8l-.4 2.9h-2.4v7c4.8-.8 8.5-4.9 8.5-9.9 0-5.53-4.5-10.02-10-10.02z"/></svg>
+    <div class="contact-info"><span class="contact-label">Facebook</span><span class="contact-value">mymn.fy</span></div>
+  </a>
+  <a href="https://linkedin.com/in/ahmad-muhaimin-hatta" target="_blank" class="contact-card">
+    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+    <div class="contact-info"><span class="contact-label">LinkedIn</span><span class="contact-value">ahmad-muhaimin-hatta</span></div>
+  </a>
+</div>
