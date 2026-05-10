@@ -281,6 +281,52 @@
     }
     .section-heading .material-icons { color: var(--accent); font-size: 1.6rem; }
 
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      min-height: 400px;
+    }
+    .empty-state > .material-icons {
+      font-size: 4.5rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+    .empty-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .empty-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 400px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .empty-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .empty-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,210,211,0.3);
+    }
+
     .book-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -693,11 +739,28 @@
     .post-location { display: none; }
     .post-reactions { display: none; }
 
+    .hero-carousel .splide__slide {
+    transform: scale(0.92);
+    filter: blur(2px);
+    opacity: 0.5;
+  }
+
+  .hero-carousel .splide__slide.is-active {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  .hero-slide-link {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
     /* -------------------------------------------------------
-       FIX: Blogger editor sering menyisipkan inline
-       background-color & color pada <span>/<font>/<b> dll.
-       Di dark mode ini terlihat sebagai highlight putih/abu.
-       Override semua agar transparan & warna ikut tema.
+      FIX: Blogger editor sering menyisipkan inline
+      background-color & color pada <span>/<font>/<b> dll.
+      Di dark mode ini terlihat sebagai highlight putih/abu.
+      Override semua agar transparan & warna ikut tema.
     ------------------------------------------------------- */
     [data-theme="dark"] .detail-body span,
     [data-theme="dark"] .detail-body font,
@@ -885,8 +948,18 @@
                 <span data-i18n='colHead'>Koleksi Buku</span>
               </h2>
 
-              <div class='book-grid'>
-                <b:loop values='data:posts' var='post'>
+              <b:if cond='data:posts.empty'>
+                <div class='empty-state'>
+                  <span class='material-icons'>search_off</span>
+                  <h3 class='empty-title' data-i18n='emptyTitle'>Tidak Ada Hasil</h3>
+                  <p class='empty-desc' data-i18n='emptyDesc'>Koleksi yang Anda cari tidak ditemukan...</p>
+                  <a class='empty-btn' expr:href='data:blog.homepageUrl'>
+                    <span class='material-icons'>home</span> <span data-i18n='emptyBtn'>Kembali ke Beranda</span>
+                  </a>
+                </div>
+              <b:else/>
+                <div class='book-grid'>
+                  <b:loop values='data:posts' var='post'>
                   <article class='book-card'>
                     <a class='card-link' expr:href='data:post.url'>
                       <div class='card-image'>
@@ -908,6 +981,7 @@
                   </article>
                 </b:loop>
               </div>
+              </b:if>
 
               <div class='pagination' id='blog-pager'>
                 <b:if cond='data:newerPageLink'>
@@ -1649,7 +1723,7 @@
     <div class='footer-box glass'>
       <div class='footer-inner'>
         <span class='footer-copy' data-i18n='footerText'>
-          &#169; <data:blog.year/> <data:blog.title/> &#8212; Made with &#10084;&#65039; by <a href='https://github.com/mymn-fy' rel='author' target='_blank'>Min</a>
+          &#169; <data:blog.year/> <data:blog.title/> &#8212; Made with &#10022; by <a href='https://github.com/mymn-fy' rel='author' target='_blank'>Min</a>
         </span>
         <nav aria-label='Social links' class='social social--footer'>
           <ul>
