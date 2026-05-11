@@ -671,6 +671,8 @@
       .header-search { width: 260px; }
     }
     @media (max-width: 768px) {
+      .header-actions { flex-shrink: 0; }   /* ← tambahkan ini */
+      .header-search { flex: 1; min-width: 0; }  /* ← tambahkan min-width: 0 */
       .header-inner { height: 60px; gap: 12px; }
       .brand-text { display: none; }
       .main-nav { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--bg-elevated); border-bottom: 1px solid var(--border); padding: 12px 24px; flex-direction: column; gap: 4px; z-index: 999; }
