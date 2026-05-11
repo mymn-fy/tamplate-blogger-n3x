@@ -805,6 +805,16 @@
     [data-theme="dark"] .detail-body td {
       background-color: unset !important;
     }
+.main-nav a[href*="perpustakaan-bsi"] .material-symbols-outlined {
+  font-size: 0.85em;
+  margin-left: 1px;
+  vertical-align: middle;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.main-nav a[href*="perpustakaan-bsi"]:hover .material-symbols-outlined {
+  opacity: 1;
+}
   ]]></b:skin>
 </head>
 
@@ -833,7 +843,7 @@
                 <b:widget-setting name='sorting'>NONE</b:widget-setting>
                 <b:widget-setting name='link-4'>https://perpustakaan-bsi.page.gd/index.php</b:widget-setting>
                 <b:widget-setting name='text-1'>Koleksi</b:widget-setting>
-                <b:widget-setting name='link-1'>/search/label/</b:widget-setting>
+                <b:widget-setting name='link-1'>/search/label/?max-results=100</b:widget-setting>
                 <b:widget-setting name='text-0'>Beranda</b:widget-setting>
                 <b:widget-setting name='link-2'>/p/tentang.html</b:widget-setting>
                 <b:widget-setting name='text-3'>Kontak</b:widget-setting>
@@ -1883,6 +1893,14 @@
       navOriginals.push(a.textContent.trim());
     });
 
+/* Icon arrow_outward di samping Pustaka BSI */
+document.querySelectorAll('.main-nav a[href*="perpustakaan-bsi"]').forEach(function(a) {
+  var icon = document.createElement('span');
+  icon.className = 'material-symbols-outlined';
+  icon.textContent = 'arrow_outward';
+  a.appendChild(icon);
+});
+
     var currentLang = 'id';
 
     function applyLang(lang) {
@@ -1968,7 +1986,7 @@
   <script>
   //<![CDATA[
   document.addEventListener("DOMContentLoaded", function() {
-    var perPage = 10;
+    var perPage = 14; // Sesuaikan dengan jumlah post per halaman di Dashboard > Setelan > Pos dan Komentar
     var maxVisiblePages = 5;
     var pager = document.getElementById('blog-pager');
     if (!pager) return;
@@ -2122,7 +2140,7 @@
         perPage: 5,
         gap: '20px',
         autoplay: true,
-        interval: 3500,
+        interval: 2500,
         speed: 800,
         updateOnMove: true,
         pagination: false,
